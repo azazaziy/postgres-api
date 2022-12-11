@@ -1,0 +1,15 @@
+[[package]]
+name = "psycopg2-binary"
+version = "2.9.5"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.9"
+content-hash = "a9a4373160effa9051849836276e747087bbee2ccf157ba3ad5c4b6de9ce776b"
+
+[metadata.files]
+psycopg2-binary = []

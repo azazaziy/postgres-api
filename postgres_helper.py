@@ -1,5 +1,6 @@
 import psycopg2
 
+
 class PostgresHelper:
     def __init__(
             self,

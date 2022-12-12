@@ -147,7 +147,10 @@ class PostgresHelper:
         if kwargs['headers'].get('with_field_names') or kwargs['headers'].get('as_dict'):
             column_names = self.__select_fields(table_name=kwargs.get('table'))
             return {'fields': column_names, 'data': data}
-        return data[0]
+        if data[0]:
+            return data[0]
+        else:
+            return 0
 
     def _select_all(self, **kwargs):
         with self.connection:

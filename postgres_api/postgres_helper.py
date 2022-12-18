@@ -111,7 +111,7 @@ class PostgresHelper:
         return f"""
         SELECT {self.__parse_select_query(kwargs['data'].get('values'))} 
         FROM {kwargs['headers'].get('table')} 
-        {self.__parse_conditions(kwargs['data'].get('conditions'))}
+        {self.__parse_conditions(kwargs['headers'].get('conditions'))}
         """
 
     def __generate_insert_sql(self, **kwargs):

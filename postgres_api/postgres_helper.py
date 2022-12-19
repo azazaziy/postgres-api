@@ -108,12 +108,12 @@ class PostgresHelper:
         return f"{target.get('field')} = {target.get('value')}"
 
     def __generate_select_sql(self, **kwargs):
-        return f"""
+        sql =  f"""
         SELECT {self.__parse_select_query(kwargs['headers'].get('fields'))} 
         FROM {kwargs['headers'].get('table')} 
         {self.__parse_conditions(kwargs['headers'].get('conditions'))}
         """
-
+        return sql
     def __generate_insert_sql(self, **kwargs):
         if kwargs['headers'].get('from_dict'):
             return self.__from_dict(**kwargs)

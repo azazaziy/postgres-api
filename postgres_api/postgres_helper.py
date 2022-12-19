@@ -108,12 +108,12 @@ class PostgresHelper:
         return f"{target.get('field')} = {target.get('value')}"
 
     def __generate_select_sql(self, **kwargs):
-        sql =  f"""
-        SELECT {self.__parse_select_query(kwargs['data'].get('values'))} 
+        return f"""
+        SELECT {self.__parse_select_query(kwargs['headers'].get('fields'))} 
         FROM {kwargs['headers'].get('table')} 
         {self.__parse_conditions(kwargs['headers'].get('conditions'))}
         """
-        return sql
+
     def __generate_insert_sql(self, **kwargs):
         if kwargs['headers'].get('from_dict'):
             return self.__from_dict(**kwargs)
@@ -154,7 +154,7 @@ class PostgresHelper:
 
     def _select_all(self, **kwargs):
         with self.connection:
-            self.cursor.execute(self.__generate_select_sql(**kwargs['data']))
+            self.cursor.execute(self.__generate_select_sql(**kwargs))
             data = self.cursor.fetchall()
         if kwargs['headers'].get('with_field_names') or kwargs['headers'].get('as_dict'):
             column_names = self.__select_fields(table_name=kwargs['headers'].get('table'))

@@ -148,7 +148,7 @@ class PostgresHelper:
             column_names = self.__select_fields(table_name=kwargs.get('table'))
             return {'fields': column_names, 'data': data}
         if data:
-            return data[0]
+            return data
         else:
             return 0
 

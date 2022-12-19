@@ -145,7 +145,7 @@ class PostgresHelper:
             self.cursor.execute(self.__generate_select_sql(**kwargs))
             data = self.cursor.fetchone()
         if kwargs['headers'].get('with_field_names') or kwargs['headers'].get('as_dict'):
-            column_names = self.__select_fields(table_name=kwargs.get('table'))
+            column_names = self.__select_fields(table_name=kwargs['headers'].get('table'))
             return {'fields': column_names, 'data': data}
         if data:
             return data
